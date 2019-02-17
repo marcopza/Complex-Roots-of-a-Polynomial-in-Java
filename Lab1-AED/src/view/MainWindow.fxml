@@ -26,7 +26,7 @@
             <Label text="x^4 +" />
             <TextField fx:id="c3TextField" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="38.0" />
             <Label text="x^3 +" />
-            <TextField fx:id="c2TextField11111111" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="38.0" />
+            <TextField fx:id="c2TextField" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="38.0" />
             <Label text="x^2 +" />
             <TextField fx:id="c1TextField" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="38.0" />
             <Label text="x +" />

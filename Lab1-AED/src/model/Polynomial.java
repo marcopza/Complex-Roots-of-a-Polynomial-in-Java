@@ -1,25 +1,39 @@
 package model;
 
-import java.util.ArrayList;
+import org.nfunk.jep.JEP;
+
+import ast.Operation;
+import tokenizer.AbstractTreeBuilder;
+import tokenizer.TokenizerException;
 
 public class Polynomial {
 
-	private int orderOfGrowth; 
-	//Podemos hacerlo como si fuese una lista enlazada o usar un arrayList. 
-	//private String expression;
-	//private ArrayList<String> ExpersiónPostSplit
-	// ó
-	//private Expression primera;
+	//polynomial parser
+	private JEP jepPoly = new JEP();
+	private Derivative deriv;
 	
-	public ArrayList<Integer> newtonMethod(){
+	public Polynomial(String poly, String deriv) throws TokenizerException {
 		
-		return new ArrayList<Integer>();
+		jepPoly.addStandardConstants();
+		jepPoly.addStandardFunctions();
+		jepPoly.parseExpression(poly);
 		
 	}
 	
-	public ArrayList<Integer> secantMethod(){
+	public double evalPoly(double x) {
 		
-		return new ArrayList<Integer>();
+		jepPoly.addVariable("x", x);
+		double r = jepPoly.getValue();
+		if (jepPoly.hasError()) {
+			System.out.println(jepPoly.getErrorInfo());
+		}
+		return r;
+		
+	}
+	
+	public double evalDeriv(double x) {
+		
+		return deriv.eval(x);
 		
 	}
 	
