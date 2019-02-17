@@ -66,22 +66,27 @@ public class MainWindowController implements Initializable {
 	void newtonMethod(ActionEvent event) {
 
 		String f = "";
-		boolean hasNext = true;
-		for (int i = 10; i >= 0 && hasNext; i--) {
+		String d = "";
+		for (int i = 10; i >= 0; i--) {
 			String text = textFields.get(i).getText();
 			if (!text.isEmpty()) {
-				f += text + "x^" + i;
+
 				if (i != 0) {
-					f += " +";
-				}
-			} else {
-				f += 0 + "x^" + i;
-				if (i != 0) {
-					f += " +";
+					f += text + "x^" + i;
+					d += (Integer.parseInt(text) * i) + (i == 1 ? "" : "x^" + (i - 1));
+					f += "+";
+					d += "+";
+				} else {
+					f += text;
+					d += 0;
 				}
 			}
 		}
 		System.out.println(f);
+		System.out.println(d);
+		poly = new Polynomial(f, d);
+		System.out.println(poly.evalPoly(1));
+		System.out.println(poly.evalDeriv(1));
 
 	}
 

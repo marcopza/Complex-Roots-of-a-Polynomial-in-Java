@@ -13,6 +13,7 @@ public class Polynomial {
 		jepPoly.addStandardConstants();
 		jepPoly.addStandardFunctions();
 		jepPoly.parseExpression(poly);
+		this.deriv = new Derivative(deriv);
 		
 	}
 	
