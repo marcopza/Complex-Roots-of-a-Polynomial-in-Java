@@ -52,6 +52,13 @@ public class ComplexNumber {
 		return new ComplexNumber(r, i);
 	}
 	
+	
+	/*
+	 * This method was implemented from the following Git repository:
+	 * https://github.com/abdulfatir/jcomplexnumber
+	 * Credits to author
+	 * @author Abdul Fatir.
+	 */
 	public static ComplexNumber pow(ComplexNumber z, int power)
 	{
 		ComplexNumber output = new ComplexNumber(z.real,z.imaginary);
