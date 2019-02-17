@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <tabs>
     <Tab text="Algorithm 1">
       <content>
@@ -50,7 +50,7 @@
                               <Font name="MT Extra" size="15.0" />
                            </font>
                         </Label>
-                        <Label layoutX="203.0" layoutY="41.0" text="Ni idea, toca escoger rawr xd">
+                        <Label layoutX="260.0" layoutY="41.0" text="la secante">
                            <font>
                               <Font name="MT Extra" size="15.0" />
                            </font>
