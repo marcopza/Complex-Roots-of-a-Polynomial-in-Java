@@ -2,17 +2,13 @@ package model;
 
 import org.nfunk.jep.JEP;
 
-import ast.Operation;
-import tokenizer.AbstractTreeBuilder;
-import tokenizer.TokenizerException;
-
 public class Polynomial {
 
 	//polynomial parser
 	private JEP jepPoly = new JEP();
 	private Derivative deriv;
 	
-	public Polynomial(String poly, String deriv) throws TokenizerException {
+	public Polynomial(String poly, String deriv) {
 		
 		jepPoly.addStandardConstants();
 		jepPoly.addStandardFunctions();

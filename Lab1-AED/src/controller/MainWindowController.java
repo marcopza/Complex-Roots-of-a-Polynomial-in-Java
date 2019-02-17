@@ -75,6 +75,11 @@ public class MainWindowController implements Initializable {
 				if (i != 0) {
 					f += " +";
 				}
+			} else {
+				f += 0 + "x^" + i;
+				if (i != 0) {
+					f += " +";
+				}
 			}
 		}
 		System.out.println(f);
