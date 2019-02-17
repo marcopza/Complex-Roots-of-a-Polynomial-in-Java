@@ -68,12 +68,13 @@ public class MainWindowController implements Initializable {
 
 		String f = "";
 		boolean hasNext = true;
-		for (int i = 0; i < 10 && hasNext; i++) {
+		for (int i = 10; i >= 0 && hasNext; i--) {
 			String text = textFields.get(i).getText();
 			if (!text.isEmpty()) {
-				f += text + "x^" + i + " +";
-			} else {
-				hasNext = false;
+				f += text + "x^" + i;
+				if (i != 0) {
+					f += " +";
+				}
 			}
 		}
 		System.out.println(f);
