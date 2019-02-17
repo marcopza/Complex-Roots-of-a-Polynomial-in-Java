@@ -10,6 +10,7 @@ public class Derivative {
 
 		jepDeriv.addStandardConstants();
 		jepDeriv.addStandardFunctions();
+		jepDeriv.addVariable("x", 0);
 		jepDeriv.parseExpression(deriv);
 
 	}

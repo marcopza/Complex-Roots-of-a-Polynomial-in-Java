@@ -72,8 +72,8 @@ public class MainWindowController implements Initializable {
 			if (!text.isEmpty()) {
 
 				if (i != 0) {
-					f += text + "x^" + i;
-					d += (Integer.parseInt(text) * i) + (i == 1 ? "" : "x^" + (i - 1));
+					f += text + "*" + "x^" + i;
+					d += (Integer.parseInt(text) * i) + "*" + (i == 1 ? "" : "x^" + (i - 1));
 					f += "+";
 					d += "+";
 				} else {
@@ -85,8 +85,8 @@ public class MainWindowController implements Initializable {
 		System.out.println(f);
 		System.out.println(d);
 		poly = new Polynomial(f, d);
-		System.out.println(poly.evalPoly(1));
-		System.out.println(poly.evalDeriv(1));
+		Newton newton = new Newton();
+		System.out.println(newton.findRoot(poly, 1, 1e-6, 200));
 
 	}
 
