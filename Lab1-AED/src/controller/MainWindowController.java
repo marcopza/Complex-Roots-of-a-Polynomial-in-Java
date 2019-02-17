@@ -10,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import model.Newton;
 import model.Polynomial;
-import tokenizer.TokenizerException;
 
 public class MainWindowController implements Initializable {
 
