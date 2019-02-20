@@ -8,8 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import model.Newton;
-import model.Polynomial;
+import model.ComplexPolynomial;
 
 public class MainWindowController implements Initializable {
 
@@ -43,7 +42,7 @@ public class MainWindowController implements Initializable {
 	private Button secantMethodButton;
 	@FXML
 	private TextField rootsTextField;
-	private Polynomial poly;
+	private ComplexPolynomial poly;
 	private ArrayList<TextField> textFields;
 
 	@Override
@@ -65,28 +64,7 @@ public class MainWindowController implements Initializable {
 	@FXML
 	void newtonMethod(ActionEvent event) {
 
-		String f = "";
-		String d = "";
-		for (int i = 10; i >= 0; i--) {
-			String text = textFields.get(i).getText();
-			if (!text.isEmpty()) {
-
-				if (i != 0) {
-					f += text + "*" + "x^" + i;
-					d += (Integer.parseInt(text) * i) + "*" + (i == 1 ? "" : "x^" + (i - 1));
-					f += "+";
-					d += "+";
-				} else {
-					f += text;
-					d += 0;
-				}
-			}
-		}
-		System.out.println(f);
-		System.out.println(d);
-		poly = new Polynomial(f, d);
-		Newton newton = new Newton();
-		System.out.println(newton.findRoot(poly, 1, 1e-6, 200));
+		
 
 	}
 
