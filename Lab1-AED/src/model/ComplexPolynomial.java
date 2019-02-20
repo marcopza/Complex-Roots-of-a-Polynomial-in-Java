@@ -13,6 +13,16 @@ public class ComplexPolynomial {
 	private DurandKerner dk;
 	private Complex[] complexCoe;
 	
+	
+	/**
+	 * This is the constructor method for the ComplexPolynomial class. 
+	 * This method receives an array of double values, said values are the coefficients of the polynomial.
+	 * The first number of the array must be the coefficient paired with the variable which indicates the
+	 * order of the polynomial.
+	 * Using the array, the method then creates a complex polynomial starting with value zero then adding each 
+	 * coefficient paired with the desired variable "x" to the e_th power.  
+	 * @param coefficients
+	 */
 	public ComplexPolynomial(Double[] coefficients) {
 		complexCoe = new Complex[coefficients.length];
 		for(int i = 0; i < coefficients.length; i++) {
@@ -25,10 +35,17 @@ public class ComplexPolynomial {
         }
 	}
 	
+	/**
+	 * This method initializes a new DurandKerner object.
+	 * With this object, the method calls the root_finder method in class DurandKerner, returning the value
+	 * it obtains from it. 
+	 * @return ArrayList - the ArrayList containing the roots.
+	 */
 	public ArrayList<Complex> durandKerner(){
 		
 		dk = new DurandKerner(polynomial, complexCoe);
 		return dk.solve();
+		
 	}
 	
 }
