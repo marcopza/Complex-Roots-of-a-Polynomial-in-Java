@@ -5,5 +5,6 @@
 	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JEP"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/expParser"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JScience"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

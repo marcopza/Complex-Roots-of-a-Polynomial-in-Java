@@ -1,52 +1,59 @@
 package model;
 
+import org.jscience.mathematics.number.Complex;
+
 import java.util.ArrayList;
+
+import org.jscience.mathematics.function.Polynomial;;
 
 public class DurandKerner {
 
-	private ArrayList<String> roots;
-	private ArrayList<ComplexNumber> previous;
-	private ArrayList<ComplexNumber> current;
-	private ArrayList<ComplexNumber> coefficients;
+	private ArrayList<Complex> roots;
+	private Polynomial<Complex> polynomial;
 	private double epsilon = 1e-15;
+	private int maxIterations = 999;
 	
-	public DurandKerner(ArrayList<ComplexNumber> coefficients) {
-		this.coefficients = coefficients;
-		ComplexNumber toAdd1 = new ComplexNumber(0.4, 0.9);
-		for (int i = 0; i < coefficients.size() - 1; i++) {
+	public DurandKerner(Polynomial<Complex> polynomial, Complex[] complexCoe) {
+		
+		this.polynomial = polynomial;
+		for(int i = 0; i < complexCoe.length-1; i++) {
 			if(i == 0) {
-				previous.add(new ComplexNumber(1));
-			}
-			else {
-				previous.add(toAdd1);
-				
+				roots.add(Complex.valueOf(-0.65, 0.72));
+			}else {
+				roots.add(Complex.valueOf(0.5, 0.9).pow(i));
 			}
 		}
 	}
-	
-	public ArrayList<String> findRoots(){
-		boolean keepGoing = true;
-		ComplexNumber divisor;
-		while(keepGoing) {
-			for(int i = 0; i < current.size(); i++) {
+
+	public ArrayList<Complex> solve() {
+		
+		ArrayList<Complex> previous = roots;
+		boolean finished = false;
+		Complex divisor;
+		Complex result;
+		int iterations = 0;
+		while(!finished) {
+			for(int i = 0; i < roots.size(); i++) {
+				divisor = Complex.ONE;
 				for(int j = 0; j < previous.size(); j++) {
-					divisor = new ComplexNumber(1);
 					if(i != j) {
-						divisor = divisor.multiply((current.get(i).subtract(previous.get(j))));
+						divisor = roots.get(i).minus(previous.get(j)).times(divisor);
 					}
 				}
-				
+				result = polynomial.evaluate(roots.get(i)).divide(divisor);
+				roots.set(i, result);
 			}
-			
-//			if() {
-//				
-//			}
-		}
-		
-		for(ComplexNumber c : current) {
-			roots.add(c.getJoinedForm());
+			iterations++;
+			for(int i = 0; i < roots.size(); i++) {
+				if((Math.abs(roots.get(i).minus(previous.get(i)).getReal()) < epsilon &&
+						Math.abs(roots.get(i).minus(previous.get(i)).getImaginary()) < epsilon) ||
+						!(iterations < maxIterations)) {
+					finished = true;
+				}
+			}
 		}
 		return roots;
+		
 	}
 	
 }
