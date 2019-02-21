@@ -24,6 +24,7 @@ public class ComplexPolynomial {
 	 * @param coefficients
 	 */
 	public ComplexPolynomial(double[] coefficients) {
+		monic(coefficients);
 		complexCoe = new Complex[coefficients.length];
 		for(int i = 0; i < coefficients.length; i++) {
 			complexCoe[i] = Complex.valueOf(coefficients[i], 0);
@@ -48,6 +49,16 @@ public class ComplexPolynomial {
 		
 	}
 
+	public void monic(double[] coe) {
+		double temp;
+		if(coe[0] != 1) {
+			temp = coe[0];
+			for(int i = 0; i < coe.length; i++) {
+				coe[i] = coe[i] / temp;
+			}
+		}
+	}
+	
 	public Polynomial<Complex> getPolynomial() {
 		return polynomial;
 	}
