@@ -21,6 +21,7 @@ public class Main extends Application{
 		Parent root = loader.load();
 		Scene mainScene = new Scene(root);
 		primaryStage.setScene(mainScene);
+		primaryStage.setTitle("Root Finder");
 		primaryStage.show();
 		
 	}
