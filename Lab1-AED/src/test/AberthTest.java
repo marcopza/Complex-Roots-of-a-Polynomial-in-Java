@@ -23,7 +23,7 @@ class AberthTest {
 		setUpScene1();
 		results = poly.aberth();
 		for (Complex c : results) {
-			assertTrue((poly.getPolynomial().evaluate(c)).doubleValue() < 1e-10);
+			assertTrue((poly.getPolynomial().evaluate(c)).doubleValue() < 1e-5);
 		}
 
 	}
