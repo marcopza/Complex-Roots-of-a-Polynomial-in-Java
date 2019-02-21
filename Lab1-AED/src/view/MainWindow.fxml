@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowController">
    <children>
       <HBox alignment="CENTER" prefHeight="79.0" prefWidth="800.0">
          <children>
@@ -44,7 +44,7 @@
                   <Button fx:id="randomPolMethod" mnemonicParsing="false" onAction="#randomPolynomial" text="Random Polynomial" />
                   <HBox alignment="CENTER" prefHeight="37.0" prefWidth="800.0" spacing="10.0">
                      <children>
-                        <Button fx:id="newtonMethodButton" mnemonicParsing="false" onAction="#newtonMethod" text="Newton Method" />
+                        <Button fx:id="alberthMethodButton" mnemonicParsing="false" onAction="#alberthMethod" text="Alberth Method" />
                         <Button fx:id="durandKernerMethodButton" mnemonicParsing="false" onAction="#durandKernerPressed" text="Durand-Kerner" />
                      </children>
                   </HBox>

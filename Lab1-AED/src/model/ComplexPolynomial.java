@@ -51,8 +51,8 @@ public class ComplexPolynomial {
 
 	public void monic(double[] coe) {
 		double temp;
-		if(coe[0] != 1) {
-			temp = coe[0];
+		if(coe[coe.length - 1] != 1) {
+			temp = coe[coe.length - 1];
 			for(int i = 0; i < coe.length; i++) {
 				coe[i] = coe[i] / temp;
 			}

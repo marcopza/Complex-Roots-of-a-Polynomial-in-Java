@@ -3,8 +3,10 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JEP"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/expParser"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JScience"/>
+	<classpathentry kind="lib" path="lib/exp-parser.jar"/>
+	<classpathentry kind="lib" path="lib/exp4j-0.4.8.jar"/>
+	<classpathentry kind="lib" path="lib/jscience-4.3.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
