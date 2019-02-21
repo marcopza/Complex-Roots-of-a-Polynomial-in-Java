@@ -23,7 +23,7 @@ public class ComplexPolynomial {
 	 * coefficient paired with the desired variable "x" to the e_th power.  
 	 * @param coefficients
 	 */
-	public ComplexPolynomial(Double[] coefficients) {
+	public ComplexPolynomial(double[] coefficients) {
 		complexCoe = new Complex[coefficients.length];
 		for(int i = 0; i < coefficients.length; i++) {
 			complexCoe[i] = Complex.valueOf(coefficients[i], 0);
@@ -41,11 +41,15 @@ public class ComplexPolynomial {
 	 * it obtains from it. 
 	 * @return ArrayList - the ArrayList containing the roots.
 	 */
-	public ArrayList<Complex> durandKerner(){
+	public Complex[] durandKerner(){
 		
 		dk = new DurandKerner(polynomial, complexCoe);
 		return dk.solve();
 		
+	}
+
+	public Polynomial<Complex> getPolynomial() {
+		return polynomial;
 	}
 	
 }

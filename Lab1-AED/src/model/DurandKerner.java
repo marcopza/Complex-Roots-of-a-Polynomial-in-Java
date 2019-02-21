@@ -6,11 +6,13 @@ import org.jscience.mathematics.function.Polynomial;;
 
 public class DurandKerner {
 
-	private ArrayList<Complex> roots;
+	private Complex[] roots;
 	private Polynomial<Complex> polynomial;
-	private double epsilon = 1e-15;
+	private Complex[] complexCoe;
+	private Complex[] previous;
+	private double epsilon = 1e-50;
 	private int maxIterations = 999;
-	
+	private int iterations = 0;
 
 	/**
 	 * This is the constructor method of DurandKerner.
@@ -22,13 +24,14 @@ public class DurandKerner {
 	 * @param complexCoe - the coefficients of the polynomial.
 	 */
 	public DurandKerner(Polynomial<Complex> polynomial, Complex[] complexCoe) {
+		this.complexCoe = complexCoe;
 		this.polynomial = polynomial;
-		for(int i = 0; i < complexCoe.length-1; i++) {
-			if(i == 0) {
-				roots.add(Complex.valueOf(-0.65, 0.72));
-			}else {
-				roots.add(Complex.valueOf(0.5, 0.9).pow(i));
-			}
+		roots = new Complex[complexCoe.length-1];
+		previous = new Complex[complexCoe.length-1];
+		Complex guess = Complex.valueOf(0.4, 0.9);
+		previous[0] = Complex.ONE;
+		for(int i = 1; i < complexCoe.length-1; i++) {
+			previous[i] = previous[i-1].times(guess);
 		}
 	}
 
@@ -38,35 +41,50 @@ public class DurandKerner {
 	 * The method could also stop if it takes more than 999 iterations.
 	 * @return ArrayList - the ArrayList containing the complex roots of the polynomial.
 	 */
-	public ArrayList<Complex> solve() {
+	public Complex[] solve() {
 		
-		ArrayList<Complex> previous = roots;
 		boolean finished = false;
 		Complex divisor;
 		Complex result;
 		int iterations = 0;
 		while(!finished) {
-			for(int i = 0; i < roots.size(); i++) {
-				divisor = Complex.ONE;
-				for(int j = 0; j < previous.size(); j++) {
+			for(int i = 0; i < previous.length; i++) {
+				result = Complex.ONE;
+				for(int j = 0; j < previous.length; j++) {
 					if(i != j) {
-						divisor = roots.get(i).minus(previous.get(j)).times(divisor);
+						result = previous[i].minus(previous[j]).times(result);
 					}
 				}
-				result = polynomial.evaluate(roots.get(i)).divide(divisor);
-				roots.set(i, result);
+				roots[i] = previous[i].minus(evaluate(complexCoe, previous[i]).divide(result));
 			}
-			iterations++;
-			for(int i = 0; i < roots.size(); i++) {
-				if((Math.abs(roots.get(i).minus(previous.get(i)).getReal()) < epsilon &&
-						Math.abs(roots.get(i).minus(previous.get(i)).getImaginary()) < epsilon) ||
+			for(int i = 0; i < roots.length; i++) {
+				if((Math.abs(roots[i].minus(previous[i]).getReal()) < epsilon &&
+						Math.abs(roots[i].minus(previous[i]).getImaginary()) < epsilon) ||
 						!(iterations < maxIterations)) {
 					finished = true;
 				}
 			}
+			iterations++;
+			System.arraycopy(roots, 0, previous, 0, roots.length);
 		}
 		return roots;
 		
+	}
+	
+	
+	/**
+	 * This method uses Horner's method to evaluate a polynomial.
+	 * More info can be found in: https://en.wikipedia.org/wiki/Horner%27s_method.
+	 * @param cc - complex coefficients of the polynomial.
+	 * @param x - the complex number to be evaluated in the function.
+	 * @return the complex number resulting from evaluating the polynomial.
+	 */
+	public Complex evaluate(Complex[] cc, Complex x) {
+		Complex result = cc[0];
+        for (int i = 1; i < cc.length; i++) {
+           result = result.times(x).plus(cc[i]);
+        }
+        return result;
 	}
 	
 }
