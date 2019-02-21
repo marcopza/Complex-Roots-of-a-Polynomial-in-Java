@@ -44,7 +44,6 @@ public class DurandKerner {
 	public Complex[] solve() {
 		
 		boolean finished = false;
-		Complex divisor;
 		Complex result;
 		int iterations = 0;
 		while(!finished) {
