@@ -7,21 +7,20 @@ import org.junit.jupiter.api.Test;
 
 import model.ComplexPolynomial;
 
-class AberthTest {
+class DurandTest {
 
 	private Complex[] results;
 	private ComplexPolynomial poly;
 
 	private void setUpScene1() {
-		double[] coefficients = { 2, -4, 3, -10 };
+		double[] coefficients = { 1, -3, 3, -5 };
 		poly = new ComplexPolynomial(coefficients);
 	}
 
 	@Test
 	void solveTest() {
-
 		setUpScene1();
-		results = poly.aberth();
+		results = poly.durandKerner();
 		for (Complex c : results) {
 			assertTrue((poly.getPolynomial().evaluate(c)).doubleValue() < 1e-10);
 		}
