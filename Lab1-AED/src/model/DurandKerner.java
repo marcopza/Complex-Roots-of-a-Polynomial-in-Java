@@ -2,7 +2,7 @@ package model;
 
 import org.jscience.mathematics.number.Complex;
 import java.util.ArrayList;
-import org.jscience.mathematics.function.Polynomial;;
+import org.jscience.mathematics.function.Polynomial;
 
 public class DurandKerner {
 
