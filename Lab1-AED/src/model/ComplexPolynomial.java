@@ -11,6 +11,8 @@ public class ComplexPolynomial {
 
 	private Polynomial<Complex> polynomial;
 	private DurandKerner dk;
+	private Aberth abe;
+	private Variable<Complex> variable;
 	private Complex[] complexCoe;
 	
 	
@@ -29,7 +31,7 @@ public class ComplexPolynomial {
 		for(int i = 0; i < coefficients.length; i++) {
 			complexCoe[i] = Complex.valueOf(coefficients[i], 0);
 		}
-		Variable<Complex> variable = new Variable.Local<Complex>("x");
+		variable = new Variable.Local<Complex>("x");
 		polynomial = Polynomial.valueOf(Complex.ZERO, variable);
 		for (int i = 0, e = complexCoe.length - 1; i < complexCoe.length; i++, e--) {
             polynomial = polynomial.plus(Polynomial.valueOf(complexCoe[i], Term.valueOf(variable, e)));
@@ -49,6 +51,11 @@ public class ComplexPolynomial {
 		
 	}
 
+	public Complex[] aberth() {
+		abe = new Aberth(polynomial, complexCoe, variable);
+		return abe.solve();
+	}
+	
 	public void monic(double[] coe) {
 		double temp;
 		if(coe[0] != 1) {

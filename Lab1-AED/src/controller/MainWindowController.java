@@ -43,10 +43,6 @@ public class MainWindowController implements Initializable {
 	@FXML
 	private Button randomPolMethod;
 	@FXML
-	private Button newtonMethodButton;
-	@FXML
-	private Button durandKernerMethodButton;
-	@FXML
 	private ListView<Text> rootsListView;
 	@FXML
     private ComboBox<Integer> degreeComboBox;
@@ -73,10 +69,21 @@ public class MainWindowController implements Initializable {
 	}
 
 	@FXML
-	void newtonMethod(ActionEvent event) {
-		
-		
-
+	void aberthMethodPressed(ActionEvent event) {
+		rootsListView.getItems().clear();
+		double[] coefficients = new double[degreeComboBox.getSelectionModel().getSelectedItem() + 1];
+		int i = 0;
+		for(TextField t : textFields) {
+			if(!t.getText().equals("")) {
+				coefficients[i] = Double.parseDouble(t.getText());
+				i++;
+			}
+		}
+		poly = new ComplexPolynomial(coefficients);
+		Complex[] results = poly.aberth();
+		for(int j = 0; j < results.length; j++) {
+			rootsListView.getItems().add(results[j].toText());
+		}
 	}
 
 	@FXML

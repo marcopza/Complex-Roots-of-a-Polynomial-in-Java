@@ -44,8 +44,8 @@
                   <Button fx:id="randomPolMethod" mnemonicParsing="false" onAction="#randomPolynomial" text="Random Polynomial" />
                   <HBox alignment="CENTER" prefHeight="37.0" prefWidth="800.0" spacing="10.0">
                      <children>
-                        <Button fx:id="newtonMethodButton" mnemonicParsing="false" onAction="#newtonMethod" text="Newton Method" />
-                        <Button fx:id="durandKernerMethodButton" mnemonicParsing="false" onAction="#durandKernerPressed" text="Durand-Kerner" />
+                        <Button mnemonicParsing="false" onAction="#aberthMethodPressed" text="Aberth Method" />
+                        <Button mnemonicParsing="false" onAction="#durandKernerPressed" text="Durand-Kerner" />
                      </children>
                   </HBox>
                </children>
